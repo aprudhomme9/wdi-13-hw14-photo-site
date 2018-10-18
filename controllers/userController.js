@@ -51,15 +51,13 @@ router.get('/:id/edit', (req, res) => {
 	})
 })
 
-
-
-
-
-
-
 // update --> put
 
-
+router.put('/:id', (req, res) => {
+	User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
+		res.redirect('/users');
+	})
+})
 
 
 
@@ -67,20 +65,6 @@ router.get('/:id/edit', (req, res) => {
 
 
 // destroy --> delete
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
