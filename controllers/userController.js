@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 		res.render('./user/index.ejs', {
 
 			users: foundUsers
-			
+
 		})
 	})
 })
@@ -24,22 +24,32 @@ router.get('/new', (req, res) => {
 
 
 // create --> post
-
-
-
-
+router.post('/', (req, res) => {
+	User.create(req.body, (err, createdUser) => {
+		res.redirect('/users');
+	})
+})
 
 
 // show --> get
 
-
-
-
-
-
+router.get('/:id', (req, res) => {
+	User.findById(req.params.id, (err, foundUser) => {
+		res.render('./user/show.ejs', {
+			user: foundUser
+		})
+	})
+})
 
 
 // edit --> get
+router.get('/:id/edit', (req, res) => {
+	User.findById(req.params.id, (err, foundUser) => {
+		res.render('./user/edit.ejs', {
+			user: foundUser
+		})
+	})
+})
 
 
 
@@ -56,7 +66,7 @@ router.get('/new', (req, res) => {
 
 
 
-// destory --> delete
+// destroy --> delete
 
 
 
