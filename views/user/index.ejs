@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Index Page</title>
+</head>
+<body>
+	<h1>Users: </h1>
+	<ul>
+		<%users.forEach((user, i) => { %>
+			<li><a href="/users/<%=user.id%>">user.username</a></li>
+		<%})%>
+	</ul>
+</body>
+</html>

@@ -7,7 +7,20 @@ const methodOverride = require('method-override');
 
 require('./db/db');
 
+const userController = require('./controllers/userController');
 
+
+// middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
+
+// controllers
+app.use('/users', userController);
+
+// index
+app.get('/', (req, res) => {
+	res.render('index.ejs');
+})
 
 
 
